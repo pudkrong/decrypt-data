@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  kms:
+    image: 826057481178.dkr.ecr.ap-southeast-1.amazonaws.com/eko-kms:latest
+    restart: always
+    depends_on:
+      - mongo
+    command:
+      ./bin/www
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://mongo:27017/kms
+    ports:
+      - 3000:3000
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '5'
+
+  mongo:
+    image: mongo:3.4
+    mem_limit: 512M
+    restart: always
+    command: mongod --noIndexBuildRetry
+    volumes:
+      - db-data:/data/db
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '5'
+
+volumes:
+  db-data:
