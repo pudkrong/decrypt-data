@@ -13,7 +13,7 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.15",
-    "mongoose": "^5.9.20",
+    "mongoose": "^5.13.15",
     "pino": "^6.3.2",
     "pino-pretty": "^4.0.0"
   }
